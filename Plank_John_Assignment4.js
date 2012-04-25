@@ -29,7 +29,8 @@ function getSomething () {
 console.log(getSomething(""));*/
 var johnLib = function () {
 
-// 4th function
+//title-case
+
 var toTitleCase =function (x)
 {
     return x.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
@@ -40,25 +41,24 @@ var toTitleCase =function (x)
 
 ///////////////////
 
-/*var x = [15,45,81,64,25,72,320,7349,16,31,630];
-
-  Array.prototype.minGreaterThan = function (numValue) {
-
-  var num=Number.POSITIVE_INFINITY, i;
-  
-    for (i=0;i<this.length;i++) if (numValue<this[i] && this[i]<num) num=this[i];
-    return num;
-};*/
+var x = [15,45,81,64,25,72,320,7349,16,31,630];
+ Array.prototype.minGreaterThan = function (numValue) {
+          var num=Number.POSITIVE_INFINITY, i;
+            for (i=0;i<this.length;i++) if (numValue<this[i] && this[i]<num) num=this[i];
+                return num;
+};
 ///////////////////
 
+//totalvalue array
 
-// 11th function 
-var getValue = function  (x) {
-	return x.length;
+var getArrayValue = function (x) {
+        console.log(x.reduce(function(a, b) {
+                return a + b;
+}))
 };
 
-/*console.log(getValue([1, 2, 3, 4, 5, 6, "john", 7, 8, 9]));*/
 
+//currency 
 
 var formatDollar = function (num) {
     var p = num.toFixed(2).split(".");
@@ -67,86 +67,78 @@ var formatDollar = function (num) {
     }, "") + "." + p[1];
 };
 
-/*console.log(formatDollar(2345))*/
+//phone
 
+var validatePhone = function validatePhone(areaCode,prefix,extension) {
+    var phoneNum = new String(areaCode + "-" + prefix + "-" + extension);
+    var regExpObj = /(\d\d\d)-\d\d\d-\d\d\d\d/;
+   
+    if(regExpObj.exec(phoneNum) == null) {
+        console.log(phoneNum + " does not contain a valid code!");
+    } else  {
+            console.log("Phone excepted");
+    }
+};
 
-var  echeck = function(str) {
+//url
 
-        var at="@"
-        var dot="."
-        var lat=str.indexOf(at)
-        var lstr=str.length
-        var ldot=str.indexOf(dot)
-        if (str.indexOf(at)==-1){
-           console.log("Invalid E-mail ID")
-           return false
-        }
+var urlValidate = function (value) {
+  var urlregex = new RegExp(
+        "^(http:\/\/www.|https:\/\/www.|ftp:\/\/www.|www.){1}([0-9A-Za-z]+\.)");
+  if(urlregex.test(value))
+  {
+    return(true);
+  }
+  return(false);
+};
 
-        if (str.indexOf(at)==-1 || str.indexOf(at)==0 || str.indexOf(at)==lstr){
-           console.log("Invalid E-mail ID")
-           return false
-        }
+//email 
 
-        if (str.indexOf(dot)==-1 || str.indexOf(dot)==0 || str.indexOf(dot)==lstr){
-            console.log("Invalid E-mail ID")
-            return false
-        }
+var emailValidate = function (str) {
+    var lastAtPos = str.lastIndexOf('@');
+    var lastDotPos = str.lastIndexOf('.');
+    return (lastAtPos < lastDotPos && lastAtPos > 0 && str.indexOf('@@') == -1 && lastDotPos > 2 && (str.length - lastDotPos) > 2);
+};
 
-         if (str.indexOf(at,(lat+1))!=-1){
-            console.log("Invalid E-mail ID")
-            return false
-         }
-
-         if (str.substring(lat-1,lat)==dot || str.substring(lat+1,lat+2)==dot){
-            console.log("Invalid E-mail ID")
-            return false
-         }
-
-         if (str.indexOf(dot,(lat+2))==-1){
-            console.log("Invalid E-mail ID")
-            return false
-         }
-        
-         if (str.indexOf(" ")!=-1){
-            console.log("Invalid E-mail ID")
-            return false
-         }
-
-         return true                    
-    };
-
-
-
-
-
-
+var getNumber = function (x) {
+    return parseInt(x);
+};
 
 
 
 
 return {
-    "formatDollar"   :formatDollar,
-    "getValue"       :getValue,
-    "Array.prototype.minGreaterThan" :Array.prototype.minGreaterThan,
-    "toTitleCase"   :toTitleCase,
-    "echeck"        :echeck
+    "formatDollar"                   :formatDollar,
+    /*"getValue"                       :getValue,*/
+    "x.minGreaterThan"               :x.minGreaterThan,
+    "toTitleCase"                    :toTitleCase,
+    "validatePhone"                  :validatePhone,
+    "urlValidate"                    :urlValidate,
+    "emailValidate"                  :emailValidate,
+    "getNumber"                      :getNumber,
+    "getArrayValue"                  :getArrayValue
 };
-
 
 };
 
 var jl = johnLib();
-console.log(jl.echeck("johnplank211@gmail.com"));
+console.log(jl.getArrayValue([3,45,6,7]));
 
 
 
 
 
 
+/*var x = [15,45,81,64,25,72,320,7349,16,31,630];
+ Array.prototype.minGreaterThan = function (numValue) {
+    
+  var num=Number.POSITIVE_INFINITY, i;
+  
+    for (i=0;i<this.length;i++) if (numValue<this[i] && this[i]<num) num=this[i];
+    return num;
+};
 
-
-
-
+console.log(x.minGreaterThan(26));*/
 
 
 
