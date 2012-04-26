@@ -1,6 +1,6 @@
 //Plank John
-//Assignment 4
-//Functions
+//SDI Assignment 4
+//Library of JS functions
 
 //starting library function 
 var johnLib = function () {
@@ -37,19 +37,12 @@ var johnLib = function () {
     };
 
 
-//currency exchange 
+//Formating a number to have  specific number of decimal places  
 
     // Accepts a decimal
-    // Rounds to 2 decimal places and then splits it into an array containing
-    // 1. Whole number portion and 2. decimal portion
-    // Adds dollar sign at beginning
+   // Uses built in function to convert number to 2 digit decimal
 
-    // oh fuck it, I copied it from Google
-    // I have no clue what black magic is being done here, but it fucking works!!
-
-    // Uses buit in function to convert number to 2 digit decimal
-
-    var formatDollar = function (num) {
+    var formatDecimal = function (num) {
         return num.toFixed(2);
        };
 
@@ -66,7 +59,7 @@ var johnLib = function () {
             if(regExpObj.exec(phoneNum) == null) {
             return phoneNum + " does not contain a valid code!";
                 } else  {
-                    return "Phone excepted";
+                    return "Phone number valid";
                 }
     };
 
@@ -141,7 +134,7 @@ var johnLib = function () {
     }
 
     return {
-        "formatDollar"                  :formatDollar,
+        "formatDecimal"                 :formatDecimal,
         "minGreaterThan"                :minGreaterThan,
         "toTitleCase"                   :toTitleCase,
         "validatePhone"                 :validatePhone,
@@ -157,19 +150,27 @@ var johnLib = function () {
 
 };
 
-var jl = johnLib();
+var jl = johnLib();  
 
-
+console.log(jl.formatDecimal(234.4));
+console.log(jl.minGreaterThan(345));
+console.log(jl.toTitleCase("shop smart shop S mart!!"));
+console.log(jl.validatePhone("717-870-0093"));
+console.log(jl.urlValidate("www.yahoo.com"));
+console.log(jl.emailValidate("fidleronthegreen@yahoo.com"));
+console.log(jl.stringToNumber("42"));
+console.log(jl.getArrayValue([23,24,56,78,99]));
+console.log(jl.changeReplace("b,o,o,m,s,t,i,c,k"))
+console.log(jl.fuzzy(34.3));
+console.log(jl.getDiffdates("12,08,2000", "10,01,2000"));
 //this is for the sort array
-var gamers =[ {name:"Brandon", age:100, motto:"Faggy Bear"},
-              {name:"Nate", age:36, motto:"I love men"},
-              {name:"John", age:24, motto:"I love even more shitty music"},
-              {name:"John", age:26, motto:"I love shitty music"}
+var gamers =[ {name:"Brandon", age:32, motto:"I love Faggy Bears in BF3"},
+              {name:"Nate", age:36, motto:"I love women"},
+              {name:"John", age:34, motto:"I love shitty music"}
             ];
-
 console.log(jl.sortByKey(gamers,"age"));
 
 
 
-//console.log(p.split("").reverse());
+
 
